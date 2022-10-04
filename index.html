@@ -44,9 +44,9 @@
         <div class="col-sm-5">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">Warning</h3>
-              <p class="card-text">These packages and images <strong>will be broken</strong>! These are not official builds. Sineware provides this service for development and testing convenience.
-                 <br /><br />Please, do <strong>not</strong> pester KDE/postmarketOS/etc devs when things break! </p>
+              <h3 class="card-title text-danger">Warning</h3>
+              <p class="card-text">These packages and images <strong>will be broken</strong>! These are not official builds, and Sineware provides this service for development and testing convenience.
+                 <br /><br />Please, do not pester KDE/postmarketOS/etc devs when things break! Issues can be reported to our <a href="https://discord.com/invite/wUHKeEVh" target="_blank">discord</a> first.</p>
             </div>
           </div>
           <br />
@@ -80,6 +80,13 @@
                     </button>
                     <hr />
                   </div>
+                  <h4>Other Devices</h4>
+                  <p>
+                    If you own a device that doesn't have an auto-generated image, it may still be supported by postmarketOS and its <code>pmbootstrap</code> utility. 
+                    <br />You can find a list of supported devices <a href="https://wiki.postmarketos.org/wiki/Devices" target="_blank">here</a>.
+                    <br />Once installed, you can follow the instructions below to add the nightly repository.
+                  </p>
+                  <hr />
                   <h3 class="card-title">Alpine Repository</h3>
                   <a href="https://espi.sineware.ca/repo/alpine/prolinux-nightly/" class="text-black">Alpine Repository (aarch64, x86_64)</a>
                   <br /><a href="https://sineware.ca/prolinux/plasma-mobile-nightly/swadmin-632219ce.rsa.pub" class="text-black">Alpine Repository Key</a></p>
@@ -92,13 +99,14 @@
       </div>
       <br />
       <hr />
-      <p>&copy 2022 Seshan Ravikumar - <a href="https://sineware.ca/">Sineware Cloud Services</a></p>
+      <a href="https://sineware.ca/"><img src="https://sineware.ca/cloud-services-logo.png" class="img-fluid" style="width: 256px;" alt="Sineware Cloud Services Logo"></a>
+      <p>&copy 2022 Seshan Ravikumar</p>
       <br />
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script defer>
       async function loadDeviceImages() {
-        let response = await fetch('https://espi.sineware.ca/json/images/plasma-mobile-nightly/');
+        let response = await fetch('https://espi.sineware.ca/json/images/plasma-mobile-nightly/images/');
         let data = await response.json();
         console.log(data);
         // Parse JSON and add buttons
@@ -111,7 +119,7 @@
             let name = item.name;
             let size = item.size;
             let mtime = item.mtime;
-            let url = "https://espi.sineware.ca/images/plasma-mobile-nightly/" + name;
+            let url = "https://espi.sineware.ca/images/plasma-mobile-nightly/images/" + name;
             let sha256 = url + ".sha256";
             html += "<a href='" + url + "' class='btn btn-dark'><i class='fa fa-download'></i> " + name + "</a><br/><br/><a href='" + sha256 + "' class='btn btn-dark'><i class='fa fa-key'></i> SHA256</a><hr />";
           }
